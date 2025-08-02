@@ -1,0 +1,202 @@
+_format_version: '3.0'
+services:
+  - name: swagger-petstore-nerw-pet-service
+    url: https://petstore.swagger.io/v2/pet
+    routes:
+      - name: swagger-petstore-nerw-pet-route
+        paths:
+          - /swagger-petstore-nerw/pet
+        strip_path: false
+        methods:
+          - POST
+        path_handling: v1
+  - name: swagger-petstore-nerw-{petId}-service
+    url: https://petstore.swagger.io/v2/pet/{petId}
+    routes:
+      - name: swagger-petstore-nerw-{petId}-route
+        paths:
+          - /swagger-petstore-nerw/pet/{petId}
+        strip_path: false
+        methods:
+          - GET
+        path_handling: v1
+  - name: swagger-petstore-nerw-{petId}-service
+    url: https://petstore.swagger.io/v2/pet/{petId}
+    routes:
+      - name: swagger-petstore-nerw-{petId}-route
+        paths:
+          - /swagger-petstore-nerw/pet/{petId}
+        strip_path: false
+        methods:
+          - POST
+        path_handling: v1
+  - name: swagger-petstore-nerw-{petId}-service
+    url: https://petstore.swagger.io/v2/pet/{petId}
+    routes:
+      - name: swagger-petstore-nerw-{petId}-route
+        paths:
+          - /swagger-petstore-nerw/pet/{petId}
+        strip_path: false
+        methods:
+          - DELETE
+        path_handling: v1
+  - name: swagger-petstore-nerw-uploadImage-service
+    url: https://petstore.swagger.io/v2/pet/{petId}/uploadImage
+    routes:
+      - name: swagger-petstore-nerw-uploadImage-route
+        paths:
+          - /swagger-petstore-nerw/pet/{petId}/uploadImage
+        strip_path: false
+        methods:
+          - POST
+        path_handling: v1
+  - name: swagger-petstore-nerw-order-service
+    url: https://petstore.swagger.io/v2/store/order
+    routes:
+      - name: swagger-petstore-nerw-order-route
+        paths:
+          - /swagger-petstore-nerw/store/order
+        strip_path: false
+        methods:
+          - POST
+        path_handling: v1
+  - name: swagger-petstore-nerw-{orderId}-service
+    url: https://petstore.swagger.io/v2/store/order/{orderId}
+    routes:
+      - name: swagger-petstore-nerw-{orderId}-route
+        paths:
+          - /swagger-petstore-nerw/store/order/{orderId}
+        strip_path: false
+        methods:
+          - GET
+        path_handling: v1
+  - name: swagger-petstore-nerw-{orderId}-service
+    url: https://petstore.swagger.io/v2/store/order/{orderId}
+    routes:
+      - name: swagger-petstore-nerw-{orderId}-route
+        paths:
+          - /swagger-petstore-nerw/store/order/{orderId}
+        strip_path: false
+        methods:
+          - DELETE
+        path_handling: v1
+  - name: swagger-petstore-nerw-user-service
+    url: https://petstore.swagger.io/v2/user
+    routes:
+      - name: swagger-petstore-nerw-user-route
+        paths:
+          - /swagger-petstore-nerw/user
+        strip_path: false
+        methods:
+          - POST
+        path_handling: v1
+  - name: swagger-petstore-nerw-createWithList-service
+    url: https://petstore.swagger.io/v2/user/createWithList
+    routes:
+      - name: swagger-petstore-nerw-createWithList-route
+        paths:
+          - /swagger-petstore-nerw/user/createWithList
+        strip_path: false
+        methods:
+          - POST
+        path_handling: v1
+  - name: swagger-petstore-nerw-logout-service
+    url: https://petstore.swagger.io/v2/user/logout
+    routes:
+      - name: swagger-petstore-nerw-logout-route
+        paths:
+          - /swagger-petstore-nerw/user/logout
+        strip_path: false
+        methods:
+          - GET
+        path_handling: v1
+  - name: swagger-petstore-nerw-{username}-service
+    url: https://petstore.swagger.io/v2/user/{username}
+    routes:
+      - name: swagger-petstore-nerw-{username}-route
+        paths:
+          - /swagger-petstore-nerw/user/{username}
+        strip_path: false
+        methods:
+          - GET
+        path_handling: v1
+  - name: swagger-petstore-nerw-pet-service
+    url: https://petstore.swagger.io/v2/pet
+    routes:
+      - name: swagger-petstore-nerw-pet-route
+        paths:
+          - /swagger-petstore-nerw/pet
+        strip_path: false
+        methods:
+          - PUT
+        path_handling: v1
+  - name: swagger-petstore-nerw-findByStatus-service
+    url: https://petstore.swagger.io/v2/pet/findByStatus
+    routes:
+      - name: swagger-petstore-nerw-findByStatus-route
+        paths:
+          - /swagger-petstore-nerw/pet/findByStatus
+        strip_path: false
+        methods:
+          - GET
+        path_handling: v1
+  - name: swagger-petstore-nerw-findByTags-service
+    url: https://petstore.swagger.io/v2/pet/findByTags
+    routes:
+      - name: swagger-petstore-nerw-findByTags-route
+        paths:
+          - /swagger-petstore-nerw/pet/findByTags
+        strip_path: false
+        methods:
+          - GET
+        path_handling: v1
+  - name: swagger-petstore-nerw-{username}-service
+    url: https://petstore.swagger.io/v2/user/{username}
+    routes:
+      - name: swagger-petstore-nerw-{username}-route
+        paths:
+          - /swagger-petstore-nerw/user/{username}
+        strip_path: false
+        methods:
+          - DELETE
+        path_handling: v1
+  - name: swagger-petstore-nerw-inventory-service
+    url: https://petstore.swagger.io/v2/store/inventory
+    routes:
+      - name: swagger-petstore-nerw-inventory-route
+        paths:
+          - /swagger-petstore-nerw/store/inventory
+        strip_path: false
+        methods:
+          - GET
+        path_handling: v1
+  - name: swagger-petstore-nerw-createWithArray-service
+    url: https://petstore.swagger.io/v2/user/createWithArray
+    routes:
+      - name: swagger-petstore-nerw-createWithArray-route
+        paths:
+          - /swagger-petstore-nerw/user/createWithArray
+        strip_path: false
+        methods:
+          - POST
+        path_handling: v1
+  - name: swagger-petstore-nerw-login-service
+    url: https://petstore.swagger.io/v2/user/login
+    routes:
+      - name: swagger-petstore-nerw-login-route
+        paths:
+          - /swagger-petstore-nerw/user/login
+        strip_path: false
+        methods:
+          - GET
+        path_handling: v1
+  - name: swagger-petstore-nerw-{username}-service
+    url: https://petstore.swagger.io/v2/user/{username}
+    routes:
+      - name: swagger-petstore-nerw-{username}-route
+        paths:
+          - /swagger-petstore-nerw/user/{username}
+        strip_path: false
+        methods:
+          - PUT
+        path_handling: v1
