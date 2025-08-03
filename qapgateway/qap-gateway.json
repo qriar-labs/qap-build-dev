@@ -1,0 +1,110 @@
+{
+  "version": 3,
+  "name": "users-mock",
+  "output_encoding": "no-op",
+  "timeout": "5000ms",
+  "cache_ttl": "300s",
+  "port": 8080,
+  "endpoints": [
+    {
+      "endpoint": "/users-mock/list-users",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_query_strings": [],
+      "input_body": "json",
+      "extra_config": {},
+      "backend": [
+        {
+          "url_pattern": "bank/users",
+          "encoding": "json",
+          "sd": "static",
+          "method": "GET",
+          "host": [
+            "https://688f6e6bf21ab1769f893051.mockapi.io/"
+          ],
+          "disable_host_sanitize": false
+        }
+      ]
+    },
+    {
+      "endpoint": "/users-mock/user-by-id/{id}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_query_strings": [],
+      "input_body": "json",
+      "extra_config": {},
+      "backend": [
+        {
+          "url_pattern": "bank/users/{id}",
+          "encoding": "json",
+          "sd": "static",
+          "method": "GET",
+          "host": [
+            "https://688f6e6bf21ab1769f893051.mockapi.io/"
+          ],
+          "disable_host_sanitize": false
+        }
+      ]
+    },
+    {
+      "endpoint": "/users-mock/update-users/{id}",
+      "method": "PUT",
+      "output_encoding": "no-op",
+      "input_query_strings": [],
+      "input_body": "json",
+      "extra_config": {},
+      "backend": [
+        {
+          "url_pattern": "bank/users/{id}",
+          "encoding": "json",
+          "sd": "static",
+          "method": "PUT",
+          "host": [
+            "https://688f6e6bf21ab1769f893051.mockapi.io"
+          ],
+          "disable_host_sanitize": false
+        }
+      ]
+    },
+    {
+      "endpoint": "/users-mock/delete-user/{id}",
+      "method": "DELETE",
+      "output_encoding": "no-op",
+      "input_query_strings": [],
+      "input_body": "json",
+      "extra_config": {},
+      "backend": [
+        {
+          "url_pattern": "bank/users/{id}",
+          "encoding": "json",
+          "sd": "static",
+          "method": "DELETE",
+          "host": [
+            "https://688f6e6bf21ab1769f893051.mockapi.io/"
+          ],
+          "disable_host_sanitize": false
+        }
+      ]
+    },
+    {
+      "endpoint": "/users-mock/create-user",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_query_strings": [],
+      "input_body": "json",
+      "extra_config": {},
+      "backend": [
+        {
+          "url_pattern": "bank/users",
+          "encoding": "json",
+          "sd": "static",
+          "method": "POST",
+          "host": [
+            "https://688f6e6bf21ab1769f893051.mockapi.io/"
+          ],
+          "disable_host_sanitize": false
+        }
+      ]
+    }
+  ]
+}
