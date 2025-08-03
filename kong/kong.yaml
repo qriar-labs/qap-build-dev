@@ -1,0 +1,72 @@
+_format_version: '3.0'
+services:
+  - name: users-mock-list users-service
+    url: https://688f6e6bf21ab1769f893051.mockapi.io/
+    routes:
+      - name: users-mock-list users-route
+        paths:
+          - /users-mock/list-users
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /bank/users
+  - name: users-mock-user by id-service
+    url: https://688f6e6bf21ab1769f893051.mockapi.io/
+    routes:
+      - name: users-mock-user by id-route
+        paths:
+          - /users-mock/user-by-id/{id}
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /bank/users/{id}
+  - name: users-mock-update-users-service
+    url: https://688f6e6bf21ab1769f893051.mockapi.io
+    routes:
+      - name: users-mock-update-users-route
+        paths:
+          - /users-mock/update-users/{id}
+        strip_path: true
+        methods:
+          - PUT
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /bank/users/{id}
+  - name: users-mock-Delete User-service
+    url: https://688f6e6bf21ab1769f893051.mockapi.io/
+    routes:
+      - name: users-mock-Delete User-route
+        paths:
+          - /users-mock/delete-user/{id}
+        strip_path: true
+        methods:
+          - DELETE
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /bank/users/{id}
+  - name: users-mock-create User-service
+    url: https://688f6e6bf21ab1769f893051.mockapi.io/
+    routes:
+      - name: users-mock-create User-route
+        paths:
+          - /users-mock/create-user
+        strip_path: true
+        methods:
+          - POST
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /bank/users
