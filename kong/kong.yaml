@@ -1,0 +1,72 @@
+_format_version: '3.0'
+services:
+  - name: users-mock-list-users-service
+    url: https://688f6e6bf21ab1769f893051.mockapi.io
+    routes:
+      - name: users-mock-list-users-route
+        paths:
+          - /users-mock/list-users
+        strip_path: true
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /bank/users
+  - name: users-mock-user-by-id-service
+    url: https://688f6e6bf21ab1769f893051.mockapi.io
+    routes:
+      - name: users-mock-user-by-id-route
+        paths:
+          - ~/users-mock/user-by-id/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /bank/users/$(uri_captures[1])
+  - name: users-mock-update-users-service
+    url: https://688f6e6bf21ab1769f893051.mockapi.io
+    routes:
+      - name: users-mock-update-users-route
+        paths:
+          - ~/users-mock/update-users/([^/]+)
+        strip_path: false
+        methods:
+          - PUT
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /bank/users/$(uri_captures[1])
+  - name: users-mock-delete-user-service
+    url: https://688f6e6bf21ab1769f893051.mockapi.io
+    routes:
+      - name: users-mock-delete-user-route
+        paths:
+          - ~/users-mock/delete-user/([^/]+)
+        strip_path: false
+        methods:
+          - DELETE
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /bank/users/$(uri_captures[1])
+  - name: users-mock-create-user-service
+    url: https://688f6e6bf21ab1769f893051.mockapi.io
+    routes:
+      - name: users-mock-create-user-route
+        paths:
+          - /users-mock/create-user
+        strip_path: true
+        methods:
+          - POST
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /bank/users
