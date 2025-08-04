@@ -1,0 +1,149 @@
+{
+  "info": {
+    "title": "Bank API",
+    "version": "0.1.9",
+    "description": "Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML."
+  },
+  "tags": [],
+  "paths": {
+    "/bank-api/list-users": {
+      "get": {
+        "summary": "Retrieve List Users",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/bank-api/user-by-id": {
+      "get": {
+        "summary": "Retrieve User By Id",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/bank-api/create-user": {
+      "post": {
+        "summary": "Create Create User",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Qap-Bank-apicreate-user"
+              }
+            }
+          },
+          "required": true,
+          "description": "Create a new Bank-apicreate-user in the store"
+        }
+      }
+    },
+    "/bank-api/delete-user": {
+      "delete": {
+        "summary": "Delete Delete User",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/bank-api/update-users": {
+      "put": {
+        "summary": "Update Update Users",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Qap-Bank-apiupdate-users"
+              }
+            }
+          },
+          "required": true,
+          "description": "Create a new Bank-apiupdate-users in the store"
+        }
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Qap-Bank-apicreate-user": {
+        "type": "object",
+        "properties": {}
+      },
+      "Qap-Bank-apiupdate-users": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    "requestBodies": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
