@@ -1,0 +1,2468 @@
+{
+  "version": 3,
+  "name": "brasil-api-new",
+  "output_encoding": "no-op",
+  "timeout": "10000ms",
+  "cache_ttl": "300s",
+  "port": 8080,
+  "plugin": {
+    "pattern": ".so",
+    "folder": "/etc/krakend/plugins/"
+  },
+  "endpoints": [
+    {
+      "endpoint": "/brasil-api-new/ibge/uf/v1/{code}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/ibge/uf/v1/{code}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/ibge/uf/v1/{code}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/cambio/v1/moedas",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/cambio/v1/moedas",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/cambio/v1/moedas"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/cep/v1/{cep}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/cep/v1/{cep}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/cep/v1/{cep}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/cnpj/v1/{cnpj}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/cnpj/v1/{cnpj}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/cnpj/v1/{cnpj}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/cptec/v1/cidade",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/cptec/v1/cidade",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/cptec/v1/cidade"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/cptec/v1/clima/capital",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/cptec/v1/clima/capital",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/cptec/v1/clima/capital"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/cptec/v1/clima/previsao/{cityCode}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/cptec/v1/clima/previsao/{cityCode}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/cptec/v1/clima/previsao/{cityCode}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/cptec/v1/ondas/{cityCode}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/cptec/v1/ondas/{cityCode}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/cptec/v1/ondas/{cityCode}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/ddd/v1/{ddd}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/ddd/v1/{ddd}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/ddd/v1/{ddd}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/fipe/marcas/v1/{tipoVeiculo}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [
+        "tabela_referencia"
+      ],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/fipe/marcas/v1/{tipoVeiculo}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/fipe/marcas/v1/{tipoVeiculo}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/fipe/preco/v1/{codigoFipe}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [
+        "tabela_referencia"
+      ],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/fipe/preco/v1/{codigoFipe}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/fipe/preco/v1/{codigoFipe}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/fipe/tabelas/v1",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/fipe/tabelas/v1",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/fipe/tabelas/v1"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/feriados/v1/{ano}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/feriados/v1/{ano}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/feriados/v1/{ano}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/ibge/uf/v1",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/ibge/uf/v1",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/ibge/uf/v1"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/ncm/v1",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [
+        "search"
+      ],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/ncm/v1",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/ncm/v1"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/ncm/v1/{code}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/ncm/v1/{code}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/ncm/v1/{code}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/cvm/corretoras/v1",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/cvm/corretoras/v1",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/cvm/corretoras/v1"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/banks/v1",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/banks/v1",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/banks/v1"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/banks/v1/{code}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/banks/v1/{code}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/banks/v1/{code}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/taxas/v1",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/taxas/v1",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/taxas/v1"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/cambio/v1/cotacao/{moeda}/{data}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/cambio/v1/cotacao/{moeda}/{data}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/cambio/v1/cotacao/{moeda}/{data}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/cep/v2/{cep}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/cep/v2/{cep}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/cep/v2/{cep}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/cvm/corretoras/v1/{cnpj}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/cvm/corretoras/v1/{cnpj}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/cvm/corretoras/v1/{cnpj}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/cptec/v1/cidade/{cityName}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/cptec/v1/cidade/{cityName}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/cptec/v1/cidade/{cityName}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/cptec/v1/clima/aeroporto/{icaoCode}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/cptec/v1/clima/aeroporto/{icaoCode}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/cptec/v1/clima/aeroporto/{icaoCode}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/cptec/v1/clima/previsao/{cityCode}/{days}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/cptec/v1/clima/previsao/{cityCode}/{days}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/cptec/v1/clima/previsao/{cityCode}/{days}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/cptec/v1/ondas/{cityCode}/{days}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/cptec/v1/ondas/{cityCode}/{days}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/cptec/v1/ondas/{cityCode}/{days}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/fipe/veiculos/v1/{tipoVeiculo}/{codigoMarca}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [
+        "tabela_referencia"
+      ],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/fipe/veiculos/v1/{tipoVeiculo}/{codigoMarca}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/fipe/veiculos/v1/{tipoVeiculo}/{codigoMarca}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/ibge/municipios/v1/{siglaUF}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [
+        "providers"
+      ],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/ibge/municipios/v1/{siglaUF}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/ibge/municipios/v1/{siglaUF}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/isbn/v1/{isbn}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [
+        "providers"
+      ],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/isbn/v1/{isbn}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/isbn/v1/{isbn}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/pix/v1/participants",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/pix/v1/participants",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/pix/v1/participants"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/registrobr/v1/{domain}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/registrobr/v1/{domain}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/registrobr/v1/{domain}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/brasil-api-new/taxas/v1/{sigla}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-dev/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/api/taxas/v1/{sigla}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://brasilapi.com.br"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "brasil-api-new",
+              "endpoint": "/brasil-api-new/taxas/v1/{sigla}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
