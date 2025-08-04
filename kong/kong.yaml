@@ -1,0 +1,282 @@
+_format_version: '3.0'
+services:
+  - name: swagger-petstore-pet-service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore-pet-route
+        paths:
+          - /swagger-petstore/pet
+        strip_path: true
+        methods:
+          - PUT
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/pet
+  - name: swagger-petstore-pet-service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore-pet-route
+        paths:
+          - /swagger-petstore/pet
+        strip_path: true
+        methods:
+          - POST
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/pet
+  - name: swagger-petstore--petid--service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore--petid--route
+        paths:
+          - ~/swagger-petstore/pet/([^/]+)
+        strip_path: false
+        methods:
+          - POST
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/pet/$(uri_captures[1])
+  - name: swagger-petstore--petid--service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore--petid--route
+        paths:
+          - ~/swagger-petstore/pet/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/pet/$(uri_captures[1])
+  - name: swagger-petstore-uploadimage-service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore-uploadimage-route
+        paths:
+          - ~/swagger-petstore/pet/([^/]+)/uploadImage
+        strip_path: false
+        methods:
+          - POST
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/pet/$(uri_captures[1])/uploadImage
+  - name: swagger-petstore--orderid--service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore--orderid--route
+        paths:
+          - ~/swagger-petstore/store/order/([^/]+)
+        strip_path: false
+        methods:
+          - DELETE
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/store/order/$(uri_captures[1])
+  - name: swagger-petstore-user-service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore-user-route
+        paths:
+          - /swagger-petstore/user
+        strip_path: true
+        methods:
+          - POST
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/user
+  - name: swagger-petstore-logout-service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore-logout-route
+        paths:
+          - /swagger-petstore/user/logout
+        strip_path: true
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/user/logout
+  - name: swagger-petstore--username--service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore--username--route
+        paths:
+          - ~/swagger-petstore/user/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/user/$(uri_captures[1])
+  - name: swagger-petstore-createwitharray-service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore-createwitharray-route
+        paths:
+          - /swagger-petstore/user/createWithArray
+        strip_path: true
+        methods:
+          - POST
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/user/createWithArray
+  - name: swagger-petstore-createwithlist-service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore-createwithlist-route
+        paths:
+          - /swagger-petstore/user/createWithList
+        strip_path: true
+        methods:
+          - POST
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/user/createWithList
+  - name: swagger-petstore-findbystatus-service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore-findbystatus-route
+        paths:
+          - /swagger-petstore/pet/findByStatus
+        strip_path: true
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/pet/findByStatus
+  - name: swagger-petstore-findbytags-service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore-findbytags-route
+        paths:
+          - /swagger-petstore/pet/findByTags
+        strip_path: true
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/pet/findByTags
+  - name: swagger-petstore--petid--service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore--petid--route
+        paths:
+          - ~/swagger-petstore/pet/([^/]+)
+        strip_path: false
+        methods:
+          - DELETE
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/pet/$(uri_captures[1])
+  - name: swagger-petstore--username--service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore--username--route
+        paths:
+          - ~/swagger-petstore/user/([^/]+)
+        strip_path: false
+        methods:
+          - DELETE
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/user/$(uri_captures[1])
+  - name: swagger-petstore-order-service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore-order-route
+        paths:
+          - /swagger-petstore/store/order
+        strip_path: true
+        methods:
+          - POST
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/store/order
+  - name: swagger-petstore-login-service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore-login-route
+        paths:
+          - /swagger-petstore/user/login
+        strip_path: true
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/user/login
+  - name: swagger-petstore--username--service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore--username--route
+        paths:
+          - ~/swagger-petstore/user/([^/]+)
+        strip_path: false
+        methods:
+          - PUT
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/user/$(uri_captures[1])
+  - name: swagger-petstore-inventory-service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore-inventory-route
+        paths:
+          - /swagger-petstore/store/inventory
+        strip_path: true
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/store/inventory
+  - name: swagger-petstore--orderid--service
+    url: https://petstore.swagger.io
+    routes:
+      - name: swagger-petstore--orderid--route
+        paths:
+          - ~/swagger-petstore/store/order/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /v2/store/order/$(uri_captures[1])
