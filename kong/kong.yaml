@@ -1,0 +1,56 @@
+_format_version: '3.0'
+services:
+  - name: users-mock-list-users-service
+    url: https://688f6e6bf21ab1769f893051.mockapi.io
+    routes:
+      - name: users-mock-list-users-route
+        paths:
+          - /users-mock/list-users
+        strip_path: true
+        methods:
+          - GET
+      - name: users-mock-user-by-id-route
+        paths:
+          - /users-mock/user-by-id/{id}
+        strip_path: true
+        methods:
+          - GET
+      - name: users-mock-update-users-route
+        paths:
+          - /users-mock/update-users/{id}
+        strip_path: true
+        methods:
+          - PUT
+      - name: users-mock-delete-user-route
+        paths:
+          - /users-mock/delete-user/{id}
+        strip_path: true
+        methods:
+          - DELETE
+      - name: users-mock-create-user-route
+        paths:
+          - /users-mock/create-user
+        strip_path: true
+        methods:
+          - POST
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /bank/users
+      - name: request-transformer
+        config:
+          replace:
+            uri: /bank/users/{id}
+      - name: request-transformer
+        config:
+          replace:
+            uri: /bank/users/{id}
+      - name: request-transformer
+        config:
+          replace:
+            uri: /bank/users/{id}
+      - name: request-transformer
+        config:
+          replace:
+            uri: /bank/users
