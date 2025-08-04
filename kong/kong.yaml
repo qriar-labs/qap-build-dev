@@ -1,0 +1,482 @@
+_format_version: '3.0'
+services:
+  - name: brasil-api--code--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--code--get-route
+        paths:
+          - ~/brasil-api/banks/v1/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/banks/v1/$(uri_captures[1])
+  - name: brasil-api-moedas-get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api-moedas-get-route
+        paths:
+          - /brasil-api/cambio/v1/moedas
+        strip_path: true
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/cambio/v1/moedas
+  - name: brasil-api--cep--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--cep--get-route
+        paths:
+          - ~/brasil-api/cep/v1/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/cep/v1/$(uri_captures[1])
+  - name: brasil-api--cnpj--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--cnpj--get-route
+        paths:
+          - ~/brasil-api/cnpj/v1/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/cnpj/v1/$(uri_captures[1])
+  - name: brasil-api-v1-get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api-v1-get-route
+        paths:
+          - /brasil-api/cvm/corretoras/v1
+        strip_path: true
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/cvm/corretoras/v1
+  - name: brasil-api-cidade-get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api-cidade-get-route
+        paths:
+          - /brasil-api/cptec/v1/cidade
+        strip_path: true
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/cptec/v1/cidade
+  - name: brasil-api-capital-get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api-capital-get-route
+        paths:
+          - /brasil-api/cptec/v1/clima/capital
+        strip_path: true
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/cptec/v1/clima/capital
+  - name: brasil-api--citycode--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--citycode--get-route
+        paths:
+          - ~/brasil-api/cptec/v1/clima/previsao/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/cptec/v1/clima/previsao/$(uri_captures[1])
+  - name: brasil-api--citycode--get-service-1
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--citycode--get-route-1
+        paths:
+          - ~/brasil-api/cptec/v1/ondas/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/cptec/v1/ondas/$(uri_captures[1])
+  - name: brasil-api--ddd--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--ddd--get-route
+        paths:
+          - ~/brasil-api/ddd/v1/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/ddd/v1/$(uri_captures[1])
+  - name: brasil-api--codigofipe--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--codigofipe--get-route
+        paths:
+          - ~/brasil-api/fipe/preco/v1/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/fipe/preco/v1/$(uri_captures[1])
+  - name: brasil-api-v1-get-service-1
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api-v1-get-route-1
+        paths:
+          - /brasil-api/fipe/tabelas/v1
+        strip_path: true
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/fipe/tabelas/v1
+  - name: brasil-api--codigomarca--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--codigomarca--get-route
+        paths:
+          - ~/brasil-api/fipe/veiculos/v1/([^/]+)/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/fipe/veiculos/v1/$(uri_captures[1])/$(uri_captures[2])
+  - name: brasil-api--siglauf--providers-dados-abertos-br-gov-wikipedia-get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: >-
+          brasil-api--siglauf--providers-dados-abertos-br-gov-wikipedia-get-route
+        paths:
+          - >-
+            ~/brasil-api/ibge/municipios/v1/([^/]+)?providers=dados-abertos-br,gov,wikipedia
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: >-
+                  /api/ibge/municipios/v1/$(uri_captures[1])?providers=dados-abertos-br,gov,wikipedia
+  - name: brasil-api-v1-get-service-2
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api-v1-get-route-2
+        paths:
+          - /brasil-api/ibge/uf/v1
+        strip_path: true
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/ibge/uf/v1
+  - name: brasil-api--domain--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--domain--get-route
+        paths:
+          - ~/brasil-api/registrobr/v1/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/registrobr/v1/$(uri_captures[1])
+  - name: brasil-api-v1-get-service-3
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api-v1-get-route-3
+        paths:
+          - /brasil-api/ncm/v1
+        strip_path: true
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/ncm/v1
+  - name: brasil-api-v1-search--code--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api-v1-search--code--get-route
+        paths:
+          - ~/brasil-api/ncm/v1?search=([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/ncm/v1?search=$(uri_captures[1])
+  - name: brasil-api--code--get-service-1
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--code--get-route-1
+        paths:
+          - ~/brasil-api/ncm/v1/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/ncm/v1/$(uri_captures[1])
+  - name: brasil-api-v1-get-service-4
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api-v1-get-route-4
+        paths:
+          - /brasil-api/banks/v1
+        strip_path: true
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/banks/v1
+  - name: brasil-api--data--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--data--get-route
+        paths:
+          - ~/brasil-api/cambio/v1/cotacao/([^/]+)/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/cambio/v1/cotacao/$(uri_captures[1])/$(uri_captures[2])
+  - name: brasil-api--cep--get-service-1
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--cep--get-route-1
+        paths:
+          - ~/brasil-api/cep/v2/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/cep/v2/$(uri_captures[1])
+  - name: brasil-api--sigla--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--sigla--get-route
+        paths:
+          - ~/brasil-api/taxas/v1/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/taxas/v1/$(uri_captures[1])
+  - name: brasil-api--cnpj--get-service-1
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--cnpj--get-route-1
+        paths:
+          - ~/brasil-api/cvm/corretoras/v1/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/cvm/corretoras/v1/$(uri_captures[1])
+  - name: brasil-api--cityname--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--cityname--get-route
+        paths:
+          - ~/brasil-api/cptec/v1/cidade/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/cptec/v1/cidade/$(uri_captures[1])
+  - name: brasil-api--icaocode--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--icaocode--get-route
+        paths:
+          - ~/brasil-api/cptec/v1/clima/aeroporto/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/cptec/v1/clima/aeroporto/$(uri_captures[1])
+  - name: brasil-api--days--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--days--get-route
+        paths:
+          - ~/brasil-api/cptec/v1/clima/previsao/([^/]+)/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: >-
+                  /api/cptec/v1/clima/previsao/$(uri_captures[1])/$(uri_captures[2])
+  - name: brasil-api--days--get-service-1
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--days--get-route-1
+        paths:
+          - ~/brasil-api/cptec/v1/ondas/([^/]+)/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/cptec/v1/ondas/$(uri_captures[1])/$(uri_captures[2])
+  - name: brasil-api--tipoveiculo--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--tipoveiculo--get-route
+        paths:
+          - ~/brasil-api/fipe/marcas/v1/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/fipe/marcas/v1/$(uri_captures[1])
+  - name: brasil-api--ano--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--ano--get-route
+        paths:
+          - ~/brasil-api/feriados/v1/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/feriados/v1/$(uri_captures[1])
+  - name: brasil-api--code--get-service-2
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--code--get-route-2
+        paths:
+          - ~/brasil-api/ibge/uf/v1/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/ibge/uf/v1/$(uri_captures[1])
+  - name: brasil-api--isbn--get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api--isbn--get-route
+        paths:
+          - ~/brasil-api/isbn/v1/([^/]+)
+        strip_path: false
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/isbn/v1/$(uri_captures[1])
+  - name: brasil-api-participants-get-service
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api-participants-get-route
+        paths:
+          - /brasil-api/pix/v1/participants
+        strip_path: true
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/pix/v1/participants
+  - name: brasil-api-v1-get-service-5
+    url: https://brasilapi.com.br
+    routes:
+      - name: brasil-api-v1-get-route-5
+        paths:
+          - /brasil-api/taxas/v1
+        strip_path: true
+        methods:
+          - GET
+        plugins:
+          - name: request-transformer
+            config:
+              replace:
+                uri: /api/taxas/v1
