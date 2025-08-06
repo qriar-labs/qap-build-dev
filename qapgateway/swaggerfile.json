@@ -1,0 +1,73 @@
+{
+  "info": {
+    "title": "API-DeckOfCards",
+    "version": "1.0.0",
+    "description": "Simulates drawing cards from a shuffled deck."
+  },
+  "tags": [],
+  "paths": {
+    "/api-deckofcards/deck/new/shuffle": {
+      "get": {
+        "summary": "Shuffle a new deck",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "deck_id": {
+                      "type": "string"
+                    },
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "shuffled": {
+                      "type": "boolean"
+                    },
+                    "remaining": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "New shuffled deck"
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "deck_count",
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "http://qap-gw-local.apps.konneqt.cloud/",
+      "description": "Production (qapgateway)"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
