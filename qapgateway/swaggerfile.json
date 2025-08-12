@@ -1,0 +1,51 @@
+{
+  "info": {
+    "title": "API Dogs",
+    "version": "0.1.9",
+    "description": "Dogs API from scratch"
+  },
+  "tags": [],
+  "paths": {
+    "/api-dogs/image": {
+      "get": {
+        "summary": "Retrieve Image",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": []
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "https://azure-qap-dev-krakend.lemonflower-d4068cb0.westus2.azurecontainerapps.io/",
+      "description": "Production (qapgateway)"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "requestBodies": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
