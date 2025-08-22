@@ -1,0 +1,184 @@
+{
+  "info": {
+    "title": "Bank pet",
+    "version": "0.1.9",
+    "description": "Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML."
+  },
+  "tags": [],
+  "paths": {
+    "/bank-pet/bank-api/list-users": {
+      "get": {
+        "summary": "Retrieve List Users",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/bank-pet/bank-api/create-user": {
+      "post": {
+        "summary": "Create Create User",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Qap-Bank-petbank-apicreate-user"
+              }
+            }
+          },
+          "required": true,
+          "description": "Create a new Bank-petbank-apicreate-user in the store"
+        }
+      }
+    },
+    "/bank-pet/bank-api/user-by-id/{id}": {
+      "get": {
+        "summary": "Retrieve Id",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "ID of id to return"
+          }
+        ]
+      }
+    },
+    "/bank-pet/bank-api/delete-user/{id}": {
+      "delete": {
+        "summary": "Delete Id",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "ID of id to return"
+          }
+        ]
+      }
+    },
+    "/bank-pet/bank-api/update-users/{id}": {
+      "put": {
+        "summary": "Update Id",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "ID of id to return"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Qap-Bank-petbank-apiupdate-users"
+              }
+            }
+          },
+          "required": true,
+          "description": "Create a new Bank-petbank-apiupdate-users in the store"
+        }
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "/",
+      "description": "Default server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Qap-Bank-petbank-apicreate-user": {
+        "type": "object",
+        "properties": {}
+      },
+      "Qap-Bank-petbank-apiupdate-users": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    "requestBodies": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
