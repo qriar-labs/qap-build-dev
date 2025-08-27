@@ -1,0 +1,51 @@
+{
+  "version": 3,
+  "name": "planeta",
+  "timeout": "10000ms",
+  "cache_ttl": "300s",
+  "output_encoding": "no-op",
+  "port": 3890,
+  "extra_config": {},
+  "endpoints": [
+    {
+      "endpoint": "/planeta/own-baas/services/pix/{cpfCnpj}/limite",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/services/pix/{cpfCnpj}/limite",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "http://baas-api-qa.own.financial"
+          ],
+          "disable_host_sanitize": false
+        }
+      ]
+    }
+  ]
+}
