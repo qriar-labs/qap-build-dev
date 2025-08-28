@@ -1,0 +1,80 @@
+{
+  "info": {
+    "title": "bank",
+    "version": "0.1.9",
+    "description": "Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML."
+  },
+  "tags": [],
+  "paths": {
+    "/bank/api-bank/list-users": {
+      "get": {
+        "summary": "Retrieve List Users",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/bank/api-bank/create-user": {
+      "post": {
+        "summary": "Create Create User",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Qap-Bankapi-bankcreate-user"
+              }
+            }
+          },
+          "required": true,
+          "description": "Create a new Bankapi-bankcreate-user in the store"
+        }
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Qap-Bankapi-bankcreate-user": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    "requestBodies": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
