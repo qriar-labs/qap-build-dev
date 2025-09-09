@@ -1,0 +1,188 @@
+{
+  "version": 3,
+  "name": "from-scratch",
+  "output_encoding": "no-op",
+  "timeout": "10000ms",
+  "cache_ttl": "300s",
+  "port": 8080,
+  "plugin": {
+    "pattern": ".so",
+    "folder": "/etc/krakend/plugins/"
+  },
+  "extra_config": {
+    "plugin/http-server": {
+      "name": [
+        "qap-krakend-plugin"
+      ],
+      "qap-krakend-plugin": {
+        "capture_all": true
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "endpoint": "/from-scratch/from-scratch/objects",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "qos/ratelimit/router": {
+          "max_rate": 5,
+          "client_max_rate": 5,
+          "every": "5m",
+          "strategy": "ip",
+          "burst": 5
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/from-scratch/objects",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "",
+            ""
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "from-scratch",
+              "endpoint": "/from-scratch/from-scratch/objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/from-scratch/from-scratch/operations",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [],
+      "extra_config": {
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        },
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "qos/ratelimit/router": {
+          "max_rate": 5,
+          "client_max_rate": 5,
+          "every": "5m",
+          "strategy": "ip",
+          "burst": 5
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/from-scratch/operations",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "",
+            ""
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "from-scratch",
+              "endpoint": "/from-scratch/from-scratch/operations"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
