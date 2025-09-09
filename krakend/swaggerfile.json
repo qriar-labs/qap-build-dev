@@ -1,0 +1,165 @@
+{
+  "info": {
+    "title": "Planeta",
+    "version": "0.1.9",
+    "description": "Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML."
+  },
+  "tags": [],
+  "paths": {
+    "/planetaMacacos/own-baas/services/pix/{cpfCnpj}/pagamento": {
+      "post": {
+        "tags": [
+          "PIX Pagamento"
+        ],
+        "summary": "Realiza transação online ou agendada PIX para o destinatário informado.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PixPagamentoResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationErrorResponse"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cpfCnpj",
+            "schema": {
+              "type": "string"
+            },
+            "example": "12345678000199",
+            "required": true,
+            "description": "CPF/CNPJ do pai ou do contrato filho para qual o serviço será utilizado."
+          }
+        ],
+        "operationId": "realizarPagamento",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PixPagamentoRequest"
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/planetaMacacos/own-baas/test/services/pix/{cpfCnpj}/favorito": {
+      "delete": {
+        "tags": [
+          "PIX Favoritos"
+        ],
+        "summary": "Deleta o favorecido favorito.",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationErrorResponse"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cpfCnpj",
+            "schema": {
+              "type": "string"
+            },
+            "example": "12345678000199",
+            "required": true,
+            "description": "CPF/CNPJ do pai ou do contrato filho para qual o serviço será utilizado."
+          },
+          {
+            "in": "query",
+            "name": "favoriteId",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "removeFavorite"
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "/",
+      "description": "Default server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "requestBodies": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
